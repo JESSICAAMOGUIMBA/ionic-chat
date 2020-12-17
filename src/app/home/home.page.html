@@ -1,20 +1,36 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    
     <ion-title>
-      Blank
+      <ion-title style="text-align: center; color: white">
+        SOLO PANAS..!!
+      </ion-title>
+      <ion-input placeholder="Identifícate aquí" [(ngModel)]="studentData.Name"></ion-input>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content #content padding id="container">|
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card *ngFor="let studentData of studentList" >
+    <ion-card-header>
+      <ion-icon name="person-circle-outline" style="color: rgb(20, 148, 62); zoom:2"></ion-icon>
+       {{studentData.Name}} : 
+    </ion-card-header>
+    <ion-card-content>
+      {{studentData.Message}}
+      <ion-icon></ion-icon>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+<ion-footer id="final-scroll">
+  <ion-toolbar>
+    <ion-input placeholder="Escribe tu mensaje..."  [(ngModel)]="studentData.Message"></ion-input>
+    <ion-buttons slot="end" >
+      <ion-button (click)="CreateRecord()">
+        <ion-icon name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
